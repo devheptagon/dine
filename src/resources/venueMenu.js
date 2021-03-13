@@ -4,6 +4,7 @@ import {Button, View, Text} from 'react-native';
 import {getMenuCategories} from '../integration/api';
 import MenuList from './sub/menuList';
 import Pages from '../utils/pages';
+import Colors from '../utils/colors';
 import {setSelectedMenuCategoryIdAction} from '../redux/app/appActions';
 
 export const VenueMenu = ({navigation}) => {
@@ -22,7 +23,7 @@ export const VenueMenu = ({navigation}) => {
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
+    <View style={{flex: 1, backgroundColor: Colors.white1}}>
       <Text style={{fontSize: 24, marginTop: 50, marginLeft: 20}}>
         Venue Menu
       </Text>

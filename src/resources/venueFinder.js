@@ -11,6 +11,7 @@ import {
   setSelectedVenueIdAction,
 } from '../redux/app/appActions';
 import Pages from '../utils/pages';
+import Colors from '../utils/colors';
 
 export const VenueFinder = ({navigation}) => {
   const dispatch = useDispatch();
@@ -63,17 +64,17 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 450,
     position: 'absolute',
-    backgroundColor: '#F0F0F0',
+    backgroundColor: Colors.white2,
   },
   listWrapper: {
     flex: 1,
     width: '100%',
     height: 1400,
-    backgroundColor: '#F7F7F7',
+    backgroundColor: Colors.white3,
     marginTop: 320,
     borderTopLeftRadius: 32,
     borderTopRightRadius: 32,
-    shadowColor: '#000',
+    shadowColor: Colors.black1,
     shadowOffset: {width: 0, height: 3},
     shadowOpacity: 0.2,
     shadowRadius: 4.65,
@@ -84,6 +85,6 @@ const styles = StyleSheet.create({
     marginTop: 17,
     marginLeft: 30,
     marginBottom: 10,
-    color: 'rgba(0,0,0,0.5)',
+    color: Colors.black5,
   },
 });

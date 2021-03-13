@@ -7,6 +7,7 @@ import {VenueFinder} from './resources/venueFinder';
 import {VenueMenu} from './resources/venueMenu';
 import {VenueMenuItems} from './resources/venueMenuItems';
 import {VenueMenuSelectedItem} from './resources/venueMenuSelectedItem';
+import Colors from './utils/colors';
 
 const CoreStack = createStackNavigator();
 const VenueStack = createBottomTabNavigator();
@@ -22,7 +23,7 @@ import {
 
 const venueSelection = () => (
   <VenueStack.Navigator
-    tabBarOptions={{activeTintColor: '#F41600', headerShown: false}}>
+    tabBarOptions={{activeTintColor: Colors.red2, headerShown: false}}>
     <VenueStack.Screen
       name="VenueMenu"
       component={VenueMenu}

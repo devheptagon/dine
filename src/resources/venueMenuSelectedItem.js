@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {View, Text} from 'react-native';
 import {getItem} from '../integration/api';
+import Colors from '../utils/colors';
 
 export const VenueMenuSelectedItem = ({navigation}) => {
   const selectedVenueId = useSelector(
@@ -21,7 +22,7 @@ export const VenueMenuSelectedItem = ({navigation}) => {
   }, [selectedVenueId, selectedItemId]);
 
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
+    <View style={{flex: 1, backgroundColor: Colors.white1}}>
       <Text style={{fontSize: 24, marginTop: 50, marginLeft: 20}}>
         Item ID: {itemArray.item_id}
       </Text>

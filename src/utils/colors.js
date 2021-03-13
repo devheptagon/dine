@@ -1,0 +1,17 @@
+export default {
+  white1: '#FFFFFF',
+  white2: '#F0F0F0',
+  white3: '#F7F7F7',
+  white4: '#F9F9F9',
+  white5: '#EDEDED',
+  red1: '#FF0000',
+  red2: '#F41600',
+  black1: '#000000',
+  black4: 'rgba(0,0,0,0.4)',
+  black5: 'rgba(0,0,0,0.5)',
+  black6: 'rgba(0,0,0,0.6)',
+  black9: 'rgba(0,0,0,0.9)',
+  black8: 'rgba(0,0,0,0.8)',
+  gray1: '#555555',
+  gray2: '#222222',
+};

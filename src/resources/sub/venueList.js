@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, TouchableWithoutFeedback} from 'react-native';
 import List from '../../components/list';
 import Stars from '../../components/stars';
+import Colors from '../../utils/colors';
 
 const VenueList = (props) => (
   <List
@@ -19,11 +20,11 @@ const ListItem = ({item, selectHandler}) => (
         flexDirection: 'row',
         width: '90%',
         height: 91,
-        backgroundColor: 'white',
+        backgroundColor: Colors.white1,
         marginTop: 12,
         marginLeft: '5%',
         borderRadius: 16,
-        shadowColor: 'rgba(0,0,0,0.6)',
+        shadowColor: Colors.black6,
         shadowOffset: {width: 0, height: 2},
         shadowOpacity: 0.1,
         shadowRadius: 3.65,
@@ -33,7 +34,7 @@ const ListItem = ({item, selectHandler}) => (
         style={{
           width: 65,
           height: 65,
-          backgroundColor: '#EDEDED',
+          backgroundColor: Colors.white5,
           marginTop: 13,
           marginLeft: 13,
           borderRadius: 12,
@@ -47,7 +48,7 @@ const ListItem = ({item, selectHandler}) => (
         <Text
           style={{
             fontSize: 12,
-            color: 'rgba(0,0,0,0.4)',
+            color: Colors.black4,
             marginTop: 4,
             marginLeft: 16,
           }}>
@@ -62,7 +63,7 @@ const ListItem = ({item, selectHandler}) => (
             <Text
               style={{
                 fontSize: 12,
-                color: 'rgba(0,0,0,0.4)',
+                color: Colors.black4,
                 marginRight: 16,
               }}>
               {item.distance}

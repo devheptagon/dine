@@ -5,6 +5,7 @@ import {getMenuItems} from '../integration/api';
 import Pages from '../utils/pages';
 import MenuItemList from './sub/menuItemList.js';
 import {setSelectedItemIdAction} from '../redux/app/appActions';
+import Colors from '../utils/colors';
 
 export const VenueMenuItems = ({navigation}) => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ export const VenueMenuItems = ({navigation}) => {
   }
 
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
+    <View style={{flex: 1, backgroundColor: Colors.white1}}>
       <Text style={{fontSize: 24, marginTop: 50, marginLeft: 20}}>
         Venue Menu Items
       </Text>

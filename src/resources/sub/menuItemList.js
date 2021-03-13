@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import List from '../../components/list';
+import Colors from '../../utils/colors';
 
 const MenuItemList = (props) => (
   <List
@@ -17,8 +18,8 @@ const ListItem = ({item, selectHandler}) => (
     style={{
       width: '100%',
       height: 55,
-      backgroundColor: '#F9F9F9',
-      borderTopColor: '#F0F0F0',
+      backgroundColor: Colors.white4,
+      borderTopColor: Colors.white2,
       borderTopWidth: 1,
     }}>
     <View
@@ -32,7 +33,7 @@ const ListItem = ({item, selectHandler}) => (
           fontSize: 19,
           marginTop: 14,
           marginLeft: 15,
-          color: '#222222',
+          color: Colors.gray2,
         }}>
         {item.name}
       </Text>
