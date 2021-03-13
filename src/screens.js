@@ -1,68 +1,66 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {Button, SafeAreaView, Text, StatusBar} from 'react-native';
+import React from 'react';
+import {Button, View, Text} from 'react-native';
+
+const Title = (props) => (
+  <Text style={{fontSize: 24, marginTop: 50, marginLeft: 20}}>
+    {props.label}
+  </Text>
+);
+
+const NavigateButton = (props) => (
+  <Button
+    onPress={(e) => props.navigation.push(props.target)}
+    title={props.label}
+  />
+);
 
 export const MyAccount = ({navigation}) => {
-  return (
-    <Text style={{fontSize: 24, marginTop: 50, marginLeft: 20}}>
-      My Account
-    </Text>
-  );
+  return <Title label="My Account" />;
 };
 
 export const VenueOffers = ({navigation}) => {
-  return (
-    <Text style={{fontSize: 24, marginTop: 50, marginLeft: 20}}>
-      Venue Offers
-    </Text>
-  );
+  return <Title label="Venue Offers" />;
 };
 
 export const VenueAbout = ({navigation}) => {
-  return (
-    <Text style={{fontSize: 24, marginTop: 50, marginLeft: 20}}>
-      Venue About
-    </Text>
-  );
+  return <Title label="Venue About" />;
 };
 
 export const VenueBasket = ({navigation}) => {
   return (
-    <>
-      <Text style={{fontSize: 24, marginTop: 50, marginLeft: 20}}>
-        Venue Basket
-      </Text>
-
-      <Button
-        onPress={(e) => navigation.push('VenueBasketPay')}
-        title="Pay for order"></Button>
-    </>
+    <View>
+      <Title label="Venue Basket" />
+      <NavigateButton
+        navigation={navigation}
+        target="VenueBasketPay"
+        label="Pay for order"
+      />
+    </View>
   );
 };
 
 export const VenueBasketPay = ({navigation}) => {
   return (
-    <>
-      <Text style={{fontSize: 24, marginTop: 50, marginLeft: 20}}>
-        Venue Basket Pay
-      </Text>
-
-      <Button
-        onPress={(e) => navigation.push('VenueBasketPayComplete')}
-        title="Confirm Payment"></Button>
-    </>
+    <View>
+      <Title label="Venue Basket Pay" />
+      <NavigateButton
+        navigation={navigation}
+        target="VenueBasketPayComplete"
+        label="Confirm Payment"
+      />
+    </View>
   );
 };
 
 export const VenueBasketPayComplete = ({navigation}) => {
   return (
-    <>
-      <Text style={{fontSize: 24, marginTop: 50, marginLeft: 20}}>
-        Thank you for your order
-      </Text>
-
-      <Button
-        onPress={(e) => navigation.navigate('preVenueSelection')}
-        title="Go home"></Button>
-    </>
+    <View>
+      <Title label="Thank you for your order" />
+      <NavigateButton
+        navigation={navigation}
+        target="VenueFinder"
+        label="Go home"
+      />
+    </View>
   );
 };

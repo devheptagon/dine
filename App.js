@@ -3,6 +3,7 @@ import {SafeAreaView, View, StatusBar} from 'react-native';
 import {Provider} from 'react-redux';
 import {initStore} from './src/redux/store';
 import MainPage from './src/MainPage';
+import FlexView from './src/components/flexView';
 
 const App = () => {
   const [store, setStore] = React.useState(null);
@@ -13,12 +14,12 @@ const App = () => {
   }, []);
   return store ? (
     <Provider store={store}>
-      <View style={{flex: 1}}>
+      <FlexView>
         <StatusBar barStyle="dark-content" />
         <SafeAreaView style={{flex: 1}}>
           <MainPage />
         </SafeAreaView>
-      </View>
+      </FlexView>
     </Provider>
   ) : null;
 };

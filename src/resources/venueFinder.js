@@ -12,6 +12,7 @@ import {
 } from '../redux/app/appActions';
 import Pages from '../utils/pages';
 import Colors from '../utils/colors';
+import FlexView from '../components/flexView';
 
 export const VenueFinder = ({navigation}) => {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ export const VenueFinder = ({navigation}) => {
   };
 
   return (
-    <View style={styles.wrapper}>
+    <FlexView>
       <VenueSearchBar />
 
       <View style={styles.mapWrapper}>
@@ -52,7 +53,7 @@ export const VenueFinder = ({navigation}) => {
           selectHandler={(itemId) => selectVenue(itemId)}
         />
       </View>
-    </View>
+    </FlexView>
   );
 };
 

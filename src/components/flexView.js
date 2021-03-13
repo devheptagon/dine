@@ -1,5 +1,5 @@
 import React from 'react';
-import {XView} from 'core';
+import {View} from 'react-native';
 
 const FlexView = ({
   children,
@@ -55,9 +55,9 @@ const FlexView = ({
   });
 
   return (
-    <XView style={newStyle} {...rest}>
+    <View style={newStyle} {...rest}>
       {children}
-    </XView>
+    </View>
   );
 };
 
