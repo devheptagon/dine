@@ -2,6 +2,7 @@ import {
   SET_LOCATION_TYPE,
   SET_SELECTED_VENUE_ID_TYPE,
   SET_MENU_CATEGORY_ID_TYPE,
+  SET_SELECTED_ITEM_ID_TYPE,
 } from './actionTypes';
 
 export const setLocationAction = (val) => ({
@@ -14,7 +15,12 @@ export const setSelectedVenueIdAction = (val) => ({
   payload: {selectedVenueId: val},
 });
 
-export const setMenuCategoryIdAction = (val) => ({
+export const setSelectedMenuCategoryIdAction = (val) => ({
   type: SET_MENU_CATEGORY_ID_TYPE,
-  payload: {menuCategoryId: val},
+  payload: {selectedMenuCategoryId: val},
+});
+
+export const setSelectedItemIdAction = (val) => ({
+  type: SET_SELECTED_ITEM_ID_TYPE,
+  payload: {selectedItemId: val},
 });

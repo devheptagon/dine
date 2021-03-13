@@ -2,12 +2,14 @@ import {
   SET_LOCATION_TYPE,
   SET_SELECTED_VENUE_ID_TYPE,
   SET_MENU_CATEGORY_ID_TYPE,
+  SET_SELECTED_ITEM_ID_TYPE,
 } from './actionTypes';
 
 const initialState = {
   location: null,
   selectedVenueId: 0,
-  menuCategoryId: 0,
+  selectedMenuCategoryId: 0,
+  selectedItemId: 0,
 };
 
 export function appReducer(state = initialState, action) {
@@ -17,8 +19,15 @@ export function appReducer(state = initialState, action) {
     case SET_SELECTED_VENUE_ID_TYPE:
       return {...state, selectedVenueId: action.payload.selectedVenueId};
     case SET_MENU_CATEGORY_ID_TYPE:
-      return {...state, menuCategoryId: action.payload.menuCategoryId};
-
+      return {
+        ...state,
+        selectedMenuCategoryId: action.payload.selectedMenuCategoryId,
+      };
+    case SET_SELECTED_ITEM_ID_TYPE:
+      return {
+        ...state,
+        selectedItemId: action.payload.selectedItemId,
+      };
     default:
       return state;
   }

@@ -4,6 +4,7 @@ import {Button, View, Text} from 'react-native';
 import {getMenuCategories} from '../integration/api';
 import MenuList from './sub/menuList';
 import Pages from '../utils/pages';
+import {setSelectedMenuCategoryIdAction} from '../redux/app/appActions';
 
 export const VenueMenu = ({navigation}) => {
   const dispatch = useDispatch();
@@ -12,12 +13,11 @@ export const VenueMenu = ({navigation}) => {
     (state) => state.appReducer.selectedVenueId,
   );
   useEffect(() => {
-    const successCallback = (categories) => setMenuCategoryArray(categories);
-    getMenuCategories(selectedVenueId, successCallback);
+    getMenuCategories(selectedVenueId, setMenuCategoryArray);
   }, [selectedVenueId]);
 
-  const selectMenuCategory = (menuCategoryId) => {
-    dispatch(setMenuCategoryArray(menuCategoryId));
+  const selectMenuCategory = (selectedMenuCategoryId) => {
+    dispatch(setSelectedMenuCategoryIdAction(selectedMenuCategoryId));
     navigation.push(Pages.VenueMenuItems);
   };
 

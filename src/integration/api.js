@@ -40,3 +40,33 @@ export const getMenuCategories = async (
     }
   }
 };
+
+export const getMenuItems = async (
+  selectedVenueId,
+  selectedMenuCategoryId,
+  successCallback,
+  errorCallback,
+) => {
+  var data = new FormData();
+  data.append('venue_id', selectedVenueId);
+  data.append('category_id', selectedMenuCategoryId);
+
+  let response = await fetch('https://cacloud.co.uk/api/dinelocal/menu/items', {
+    method: 'POST',
+    headers: global.apiheader,
+    body: data,
+  });
+  if (response.status !== 200) {
+    alert(await response.json());
+  } else {
+    let responseJson = await response.json();
+    console.log(responseJson);
+    if (responseJson['return'] === true) {
+      if (successCallback) {
+        successCallback(responseJson['menu_items']);
+      }
+    } else {
+      alert('Error fetching data');
+    }
+  }
+};

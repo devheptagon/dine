@@ -31,8 +31,8 @@ export const VenueFinder = ({navigation}) => {
     })();
   }, [dispatch]);
 
-  const selectVenue = (vid) => {
-    dispatch(setSelectedVenueIdAction(vid));
+  const selectVenue = (venueId) => {
+    dispatch(setSelectedVenueIdAction(venueId));
     navigation.navigate(Pages.VenueSelection);
   };
 
