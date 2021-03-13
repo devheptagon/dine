@@ -1,53 +1,24 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {
-  Alert,
-  Button,
-  SafeAreaView,
-  Platform,
-  TextInput,
-  View,
-  Text,
-  Image,
-  ScrollView,
-  TouchableOpacity,
-  FlatList,
-  StatusBar,
-} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {useSelector} from 'react-redux';
+import {View, Text} from 'react-native';
+import {getItem} from '../integration/api';
 
 export const VenueMenuSelectedItem = ({navigation}) => {
+  const selectedVenueId = useSelector(
+    (state) => state.appReducer.selectedVenueId,
+  );
+  const selectedItemId = useSelector(
+    (state) => state.appReducer.selectedItemId,
+  );
+
   const [itemArray, setItemArray] = useState({
     item_id: 0,
     item_name: '',
   });
 
   useEffect(() => {
-    getItem();
-  }, []);
-
-  async function getItem() {
-    var data = new FormData();
-    data.append('venue_id', global.selected_venue_id);
-
-    let response = await fetch(
-      'https://cacloud.co.uk/api/dinelocal/menu/item/' +
-        global.selected_item_id,
-      {method: 'POST', headers: global.apiheader, body: data},
-    );
-    if (response.status !== 200) {
-      alert(await response.json());
-    } else {
-      let responseJson = await response.json();
-      console.log(responseJson);
-      if (responseJson['return'] === true) {
-        setItemArray({
-          item_id: responseJson['item_array']['id'],
-          item_name: responseJson['item_array']['name'],
-        });
-      } else {
-        alert('Error fetching data');
-      }
-    }
-  }
+    getItem(selectedVenueId, selectedItemId, setItemArray);
+  }, [selectedVenueId, selectedItemId]);
 
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>

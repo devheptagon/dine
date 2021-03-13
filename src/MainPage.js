@@ -20,11 +20,6 @@ import {
   VenueBasketPayComplete,
 } from './screens';
 
-global.apiheader = {
-  'Content-Type': 'multipart/form-data',
-  authkey: '3AnTweKPbHDb3an3zZG2',
-};
-
 const venueSelection = () => (
   <VenueStack.Navigator
     tabBarOptions={{activeTintColor: '#F41600', headerShown: false}}>
