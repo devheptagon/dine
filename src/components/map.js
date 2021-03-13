@@ -1,7 +1,7 @@
 import React from 'react';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 
-export default Map = (props) => {
+const GoogleMap = (props) => {
   return (
     <MapView
       provider={PROVIDER_GOOGLE}
@@ -27,3 +27,5 @@ const defaultRegion = {
   longitude: 0,
   longitudeDelta: 0.1,
 };
+
+export default GoogleMap;
