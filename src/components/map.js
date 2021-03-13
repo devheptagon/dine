@@ -1,12 +1,23 @@
 import React from 'react';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+import {useSelector} from 'react-redux';
 
 const GoogleMap = (props) => {
+  const location = useSelector((state) => state.appReducer.location);
+  const region = location
+    ? {
+        latitude: location.coords.latitude,
+        latitudeDelta: 0.15,
+        longitude: location.coords.longitude,
+        longitudeDelta: 0.1,
+      }
+    : defaultRegion;
+
   return (
     <MapView
       provider={PROVIDER_GOOGLE}
       style={{flex: 1}}
-      region={props.region || defaultRegion}
+      region={region}
       minZoomLevel={12}
       maxZoomLevel={16}
       showsPointsOfInterest={false}
