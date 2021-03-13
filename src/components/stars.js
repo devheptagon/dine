@@ -2,7 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export const Stars = (props) => {
+const Stars = (props) => {
   return (
     <View style={{flexDirection: 'row'}}>
       {new Array(props.count || 5).fill(true).map((s, i) => (
@@ -11,3 +11,5 @@ export const Stars = (props) => {
     </View>
   );
 };
+
+export default Stars;

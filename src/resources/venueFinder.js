@@ -1,17 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  FlatList,
-  TouchableWithoutFeedback,
-} from 'react-native';
-import {StatusBarHeight} from '../haki';
+import {View, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {getLocalVenues} from '../integration/api';
-import {locationPermissionGranted, getCurrentPosition} from '../utils/helper';
+import {
+  locationPermissionGranted,
+  getCurrentPosition,
+  StatusBarHeight,
+} from '../utils/helper';
 import Map from '../components/map';
-import {Stars} from '../components/stars';
+
+import VenueList from './sub/venueList';
 
 export const VenueFinder = ({navigation}) => {
   const [VenueArray, setVenueArray] = useState();
@@ -142,71 +140,9 @@ export const VenueFinder = ({navigation}) => {
           }}>
           Nearby Restaurants
         </Text>
-        <FlatList
+        <VenueList
           data={VenueArray}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({item}) => (
-            <TouchableWithoutFeedback onPress={() => selectVenue(item.id)}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  width: '90%',
-                  height: 91,
-                  backgroundColor: 'white',
-                  marginTop: 12,
-                  marginLeft: '5%',
-                  borderRadius: 16,
-                  shadowColor: 'rgba(0,0,0,0.6)',
-                  shadowOffset: {width: 0, height: 2},
-                  shadowOpacity: 0.1,
-                  shadowRadius: 3.65,
-                  elevation: 1,
-                }}>
-                <View
-                  style={{
-                    width: 65,
-                    height: 65,
-                    backgroundColor: '#EDEDED',
-                    marginTop: 13,
-                    marginLeft: 13,
-                    borderRadius: 12,
-                  }}>
-                  {/* Image Here */}
-                </View>
-                <View style={{flex: 1, flexDirection: 'column'}}>
-                  <Text style={{fontSize: 16, marginTop: 14, marginLeft: 16}}>
-                    {item.name}
-                  </Text>
-                  <Text
-                    style={{
-                      fontSize: 12,
-                      color: 'rgba(0,0,0,0.4)',
-                      marginTop: 4,
-                      marginLeft: 16,
-                    }}>
-                    {item.address}
-                  </Text>
-
-                  <View style={{flexDirection: 'row', marginTop: 4}}>
-                    <View
-                      style={{flex: 1, flexDirection: 'row', marginLeft: 16}}>
-                      <Stars count={4} />
-                    </View>
-                    <View style={{flex: 1, alignItems: 'flex-end'}}>
-                      <Text
-                        style={{
-                          fontSize: 12,
-                          color: 'rgba(0,0,0,0.4)',
-                          marginRight: 16,
-                        }}>
-                        {item.distance}
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </TouchableWithoutFeedback>
-          )}
+          selectHandler={(itemId) => selectVenue(itemId)}
         />
       </View>
     </View>
