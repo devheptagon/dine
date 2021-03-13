@@ -6,7 +6,11 @@ import {locationPermissionGranted, getCurrentPosition} from '../utils/helper';
 import Map from '../components/map';
 import VenueList from './sub/venueList';
 import {VenueSearchBar} from './sub/venueSearchBar';
-import {setLocationAction} from '../redux/app/appActions';
+import {
+  setLocationAction,
+  setSelectedVenueIdAction,
+} from '../redux/app/appActions';
+import Pages from '../utils/pages';
 
 export const VenueFinder = ({navigation}) => {
   const dispatch = useDispatch();
@@ -27,10 +31,10 @@ export const VenueFinder = ({navigation}) => {
     })();
   }, [dispatch]);
 
-  function selectVenue(vid) {
-    global.selected_venue_id = vid;
-    navigation.navigate('venueSelection');
-  }
+  const selectVenue = (vid) => {
+    dispatch(setSelectedVenueIdAction(vid));
+    navigation.navigate(Pages.VenueSelection);
+  };
 
   return (
     <View style={styles.wrapper}>

@@ -1,38 +1,25 @@
 import React, {useState, useEffect} from 'react';
-import {Button, View, Text, TouchableOpacity, FlatList} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
+import {Button, View, Text} from 'react-native';
+import {getMenuCategories} from '../integration/api';
+import MenuList from './sub/menuList';
+import Pages from '../utils/pages';
 
 export const VenueMenu = ({navigation}) => {
+  const dispatch = useDispatch();
   const [MenuCategoryArray, setMenuCategoryArray] = useState();
-
+  const selectedVenueId = useSelector(
+    (state) => state.appReducer.selectedVenueId,
+  );
   useEffect(() => {
-    getMenuCategories();
-  }, []);
+    const successCallback = (categories) => setMenuCategoryArray(categories);
+    getMenuCategories(selectedVenueId, successCallback);
+  }, [selectedVenueId]);
 
-  async function getMenuCategories() {
-    var data = new FormData();
-    data.append('venue_id', global.selected_venue_id);
-
-    let response = await fetch(
-      'https://cacloud.co.uk/api/dinelocal/menu/categories',
-      {method: 'POST', headers: global.apiheader, body: data},
-    );
-    if (response.status !== 200) {
-      alert(await response.json());
-    } else {
-      let responseJson = await response.json();
-      console.log(responseJson);
-      if (responseJson['return'] === true) {
-        setMenuCategoryArray(responseJson['menu_categories']);
-      } else {
-        alert('Error fetching data');
-      }
-    }
-  }
-
-  function selectMenuCategory(mcid) {
-    global.selected_menu_category = mcid;
-    navigation.push('VenueMenuItems');
-  }
+  const selectMenuCategory = (menuCategoryId) => {
+    dispatch(setMenuCategoryArray(menuCategoryId));
+    navigation.push(Pages.VenueMenuItems);
+  };
 
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
@@ -46,36 +33,9 @@ export const VenueMenu = ({navigation}) => {
         onPress={(e) => navigation.push('VenueMenuCategory')}
         title="Category 1"></Button>
 
-      <FlatList
+      <MenuList
         data={MenuCategoryArray}
-        renderItem={({item}) => (
-          <TouchableOpacity
-            onPress={(e) => selectMenuCategory(item.id)}
-            style={{
-              width: '100%',
-              height: 55,
-              backgroundColor: '#F9F9F9',
-              borderTopColor: '#F0F0F0',
-              borderTopWidth: 1,
-            }}>
-            <View
-              style={{
-                flex: 1,
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-              }}>
-              <Text
-                style={{
-                  fontSize: 19,
-                  marginTop: 14,
-                  marginLeft: 15,
-                  color: '#222222',
-                }}>
-                {item.name}
-              </Text>
-            </View>
-          </TouchableOpacity>
-        )}
+        selectHandler={(itemId) => selectMenuCategory(itemId)}
       />
     </View>
   );
